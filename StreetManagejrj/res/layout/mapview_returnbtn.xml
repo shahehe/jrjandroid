@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/map_botton_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="@color/gainsboro" >
+
+        <Button
+            android:id="@+id/map_back_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+           	android:text="@string/ok_return"
+            android:textColor="@color/black" />
+       
+    </RelativeLayout>
+
+    <com.baidu.mapapi.MapView
+        android:id="@+id/bmapView"
+        android:layout_above="@id/map_botton_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true" />
+
+</RelativeLayout>

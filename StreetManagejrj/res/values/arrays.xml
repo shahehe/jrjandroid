@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="views">
+        <item>普通视图</item>
+        <item>卫星视图</item>
+    </string-array>
+    <string-array name="overlays">
+        <item>地图</item>
+        <item>井盖分布</item>
+        <item>路灯维修</item>
+    </string-array>
+
+</resources>

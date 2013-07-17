@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <style name="pf_radio_styles">
+        <item name="android:textSize">12dp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:background">@drawable/pf_radio_bg</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">2dp</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>
+
+    <style name="pf_bottom_radio_style1">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center_horizontal|bottom</item>
+        <item name="android:background">@drawable/pf_filelist_bottom_radio_con1</item>
+        <item name="android:drawableTop">@drawable/pf_filelist_bottom_radio_top1</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:paddingTop">5pt</item>
+        <item name="android:paddingBottom">3pt</item>
+        <item name="android:drawablePadding">2pt</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="pf_bottom_radio_style2">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center_horizontal|bottom</item>
+        <item name="android:background">@drawable/pf_filelist_bottom_radio_bg</item>
+        <item name="android:drawableTop">@drawable/pf_filelist_bottom_radio_top2</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:paddingTop">5pt</item>
+        <item name="android:paddingBottom">3pt</item>
+        <item name="android:drawablePadding">2pt</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="pf_bottom_radio_style3">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center_horizontal|bottom</item>
+        <item name="android:background">@drawable/pf_filelist_bottom_radio_bg</item>
+        <item name="android:drawableTop">@drawable/pf_filelist_bottom_radio_top3</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:paddingTop">5pt</item>
+        <item name="android:paddingBottom">3pt</item>
+        <item name="android:drawablePadding">2pt</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="pf_bottom_radio_style4">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center_horizontal|bottom</item>
+        <item name="android:background">@drawable/pf_filelist_bottom_radio_con2</item>
+        <item name="android:drawableTop">@drawable/pf_filelist_bottom_radio_top4</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:paddingTop">5pt</item>
+        <item name="android:paddingBottom">3pt</item>
+        <item name="android:drawablePadding">2pt</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="center_radio_style">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center_horizontal|bottom</item>
+        <item name="android:background">@drawable/pf_filelist_bottom_radio_con1</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:paddingTop">5pt</item>
+        <item name="android:paddingBottom">3pt</item>
+        <item name="android:drawablePadding">2pt</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="text_label_style">
+        <item name="android:paddingLeft">5dip</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">left|bottom</item>
+        <item name="android:paddingTop">5pt</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="Theme" parent="android:Theme">  
+  
+    </style>  
+    <style name="Theme.Transparent">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+        <item name="android:windowBackground">@drawable/backgroundrep</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:colorForeground">#fff</item>
+    </style>
+
+    
+    <style name="DialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground"> @android:color/transparent </item>
+        <item name="android:backgroundDimEnabled">false</item>    </style> 
+        
+
+ 
+    <style name="Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@null</item>
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+ 
+
+</resources>
