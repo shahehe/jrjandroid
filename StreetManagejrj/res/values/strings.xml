@@ -20,6 +20,7 @@
     <string name="text1">用户名</string>
     <string name="text2">密码</string>
     <string name="text3">电子邮件</string>
+    <string name="loading_times">读取上报次数</string>
     <string name="title"> 分类</string>
     <string name="jifen">监督提交次数</string>
     <string name="clear">清除缓存</string>
@@ -66,6 +67,13 @@
         <item>如何进行投诉举报</item>
         <item>金融街地区内资企业年检</item>
     </string-array>
+    <string-array name="total_class">
+        <item>注册用户</item>
+         <item>金融街新秀</item>
+          <item>金融街卫士</item>
+           <item>金融街达人</item>
+    </string-array>
+    
     <string-array name="procedure_array">
         <item>办理“一小”大病医疗保险</item>
         <item>人口与计生</item>
@@ -113,6 +121,11 @@
         <item>66219593</item>
         <item>66219607</item>
         <item>66216988</item>
+    </string-array>
+    
+    <string-array name="award">
+        <item>APP使用奖励</item>
+        <item>工商举报奖励</item>
     </string-array>
 
     <string name="receive_message">接收消息列表</string>

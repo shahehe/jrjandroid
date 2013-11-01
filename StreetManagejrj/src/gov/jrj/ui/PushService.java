@@ -1,5 +1,7 @@
 package gov.jrj.ui;
 
+import java.util.List;
+
 import gov.jrj.R;
 import gov.jrj.ui.MainActivity;
 
@@ -12,6 +14,7 @@ import com.ibm.mqtt.MqttPersistence;
 import com.ibm.mqtt.MqttPersistenceException;
 import com.ibm.mqtt.MqttSimpleCallback;
 
+import android.app.ActivityManager;
 import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -25,6 +28,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.IBinder;
+import android.os.SystemClock;
 import android.util.Log;
 
 public class PushService extends Service {
@@ -33,9 +37,10 @@ public class PushService extends Service {
 
 	// the IP address, where your MQTT broker is running.
 	private static final String MQTT_HOST = "218.249.192.55";// "176.34.12.20";
-//	private static final String MQTT_HOST = "64.150.161.193";// "176.34.12.20";
+	// private static final String MQTT_HOST = "64.150.161.193";//
+	// "176.34.12.20";
 
-																// //
+	// //
 	// the port at which the broker is running.
 	private static int MQTT_BROKER_PORT_NUM = 1883;
 	// Let's not use the MQTT persistence.
@@ -51,13 +56,13 @@ public class PushService extends Service {
 	// arrive more than once. However, this means that some messages might get
 	// lost (delivery is not guaranteed)
 	private static int[] MQTT_QUALITIES_OF_SERVICE = { 0 };
-	@Override
-	public int onStartCommand(Intent intent, int flags, int startId) {
-		// TODO Auto-generated method stub
-		return super.onStartCommand(intent, flags, startId);
-		
-	}
-
+	/*
+	 * @Override public int onStartCommand(Intent intent, int flags, int
+	 * startId) { // TODO Auto-generated method stub return
+	 * super.onStartCommand(intent, flags, startId);
+	 * 
+	 * }
+	 */
 	private static int MQTT_QUALITY_OF_SERVICE = 0;
 	// The broker should not retain any messages.
 	private static boolean MQTT_RETAINED_PUBLISH = false;
@@ -73,8 +78,7 @@ public class PushService extends Service {
 	public static final String ACTION_STOP = MQTT_CLIENT_ID + ".STOP";
 	public static final String ACTION_KEEPALIVE = MQTT_CLIENT_ID
 			+ ".KEEP_ALIVE";
-	public static final String ACTION_RECONNECT = MQTT_CLIENT_ID
-			+ ".RECONNECT";
+	public static final String ACTION_RECONNECT = MQTT_CLIENT_ID + ".RECONNECT";
 
 	// Connectivity manager to determining, when the phone loses connection
 	private ConnectivityManager mConnMan;
@@ -113,7 +117,14 @@ public class PushService extends Service {
 
 	// Static method to start the service
 	public static void actionStart(Context ctx) {
-		
+		/*
+		 * AlarmManager mgr = (AlarmManager)
+		 * ctx.getSystemService(ALARM_SERVICE); Intent i = new Intent(ctx,
+		 * PushService.class); PendingIntent pi =
+		 * PendingIntent.getBroadcast(ctx, 0, i, 0);
+		 * mgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+		 * SystemClock.elapsedRealtime(),60*1000, pi);
+		 */
 		Intent i = new Intent(ctx, PushService.class);
 		i.setAction(ACTION_START);
 		ctx.startService(i);
@@ -200,6 +211,21 @@ public class PushService extends Service {
 		}
 	}
 
+	/*
+	 * @Override public int onStartCommand(Intent intent, int flags, int
+	 * startId) { return START_STICKY; }
+	 */
+
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		// TODO Auto-generated method stub
+		Log.v("TrafficService", "startCommand");
+
+		flags = START_STICKY;
+		return super.onStartCommand(intent, flags, startId);
+		// return START_REDELIVER_INTENT;
+	}
+
 	@Override
 	public IBinder onBind(Intent intent) {
 		return null;
@@ -216,6 +242,25 @@ public class PushService extends Service {
 		} else {
 			Log.i(TAG, message);
 		}
+	}
+
+	public static boolean isServiceRunning(Context mContext) {
+		boolean isRunning = false;
+		String className = "gov.jrj.ui.PushService";
+		ActivityManager activityManager = (ActivityManager) mContext
+				.getSystemService(Context.ACTIVITY_SERVICE);
+		List<ActivityManager.RunningServiceInfo> serviceList = activityManager
+				.getRunningServices(30);
+		if (!(serviceList.size() > 0)) {
+			return false;
+		}
+		for (int i = 0; i < serviceList.size(); i++) {
+			if (serviceList.get(i).service.getClassName().equals(className) == true) {
+				isRunning = true;
+				break;
+			}
+		}
+		return isRunning;
 	}
 
 	// Reads whether or not the service has been started from the preferences
@@ -424,7 +469,7 @@ public class PushService extends Service {
 			// Simply open the parent activity
 			Intent intent = new Intent(this, MainActivity.class);
 			intent.putExtra("type", json.getInt("type"));
-			intent.putExtra("nc" , false);
+			intent.putExtra("nc", false);
 			PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
 			// Change the name of the notification here
 			n.setLatestEventInfo(this, NOTIF_TITLE, json.getString("message"),

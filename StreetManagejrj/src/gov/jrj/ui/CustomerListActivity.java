@@ -1,5 +1,6 @@
 package gov.jrj.ui;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +12,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import gov.jrj.library.http.Alerts;
+import gov.jrj.library.http.AsyncHttpClient;
 import gov.jrj.library.http.Config;
 import gov.jrj.library.http.JSONRPCHandler;
 import gov.jrj.library.http.JSONRPCService;
+import gov.jrj.library.http.JsonHttpResponseHandler;
 import gov.jrj.library.http.Session;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -46,6 +49,8 @@ public class CustomerListActivity extends Activity {
 	TextView mTextTitle;
 	ListView lstView;
 	Button btnBack;
+	
+	String addTime;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +84,14 @@ public class CustomerListActivity extends Activity {
 					long arg3) {
 				try {
 					JSONObject json = (JSONObject) listData.get(arg2);
+					addTime = json.getString("create_date");
+					AsyncHttpClient client = new AsyncHttpClient();
+					int uid = getSharedPreferences(Constants.KEY_SESSION_PREFS, 0)
+							.getInt(Constants.KEY_UID, 0);
+					client.get(Config.URL + "/creditLog.php?uid=" + uid + "&type=customer&extra=" + URLEncoder.encode(addTime),
+							new JsonHttpResponseHandler() {
+							});
+					
 					Intent intent = new Intent(CustomerListActivity.this,
 							DetailActivity.class);
 					// intent.putExtra("data", json.toString());

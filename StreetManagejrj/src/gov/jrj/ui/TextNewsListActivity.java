@@ -284,7 +284,10 @@ public class TextNewsListActivity extends Activity {
 						title.setMaxEms(16);
 					}
 					title.setText(json.getString("title"));
-					desc.setText(json.getString("desc"));
+					String descString = (String)json.get("desc");
+				//	if(descString == "[]")
+				//		descString = "";
+					desc.setText(descString);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="gov.jrj"
     android:versionCode="1"
-    android:versionName="1.2.2" >
+    android:versionName="1.5.0" >
 
     <uses-sdk android:minSdkVersion="8" />
 
@@ -59,6 +59,8 @@
         </activity>
         <activity android:name=".ui.DetailActivity" >
         </activity>
+        <activity android:name=".ui.AwardListActivity" >
+        </activity>
         <activity android:name=".ui.WebViewActivity" >
         </activity>
          <activity android:name=".ui.StartupWebViewActivity" >
@@ -94,7 +96,8 @@
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote" >
+            android:process=":remote" 
+            >
             <intent-filter android:priority="1000"></intent-filter>
         </service>
 

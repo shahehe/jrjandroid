@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:gravity="center" >
+        android:gravity="center" 
+         android:orientation="vertical" 
+        >
 
         <TextView
             android:id="@+id/uesrname"
@@ -19,6 +21,15 @@
             android:text=""
             android:textColor="@color/black"
             android:textSize="18dp" />
+        <TextView
+            android:id="@+id/rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -73,7 +84,7 @@
             android:background="@drawable/message_list_corner_round"
             android:paddingLeft="10dp"
             android:paddingTop="7dp"
-            android:text="test"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="@dimen/textSize"
             android:visibility="gone" />

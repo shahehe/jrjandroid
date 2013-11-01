@@ -185,18 +185,21 @@ public class MainActivity extends FragmentActivity {
 		nc = getIntent().getBooleanExtra("nc", true);
 		boolean isAutoPush = getSharedPreferences(PushService.TAG, MODE_PRIVATE)
 				.getBoolean("isAutoPush", false);
-		int uid = getSharedPreferences(PushService.TAG, MODE_PRIVATE).getInt(
+		int uid = getSharedPreferences(Constants.KEY_SESSION_PREFS, MODE_PRIVATE).getInt(
 				Constants.KEY_UID, 0);
 		if (isAutoPush && uid != 0) {
 			boolean isStarted = getSharedPreferences(PushService.TAG,
 					android.content.Context.MODE_PRIVATE).getBoolean(
 					"isStarted", false);
 			if (!isStarted) {
-				PushService.actionStart(getApplicationContext());
-				System.out.print("start");
+				if (!PushService.isServiceRunning(this)) {
+					PushService.actionStart(getApplicationContext());
+					System.out.print("start");
+				}
 			}
 		} else {
 			try {
+				Log.d("push", "stop service");
 				PushService.actionStop(getApplicationContext());
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -204,8 +207,10 @@ public class MainActivity extends FragmentActivity {
 			System.out.print("stop");
 		}
 		if (uid == 0 && !mDeviceID.equals("")) {
-			PushService.actionStart(getApplicationContext());
-			System.out.print("start");
+			if (!PushService.isServiceRunning(this)) {
+				PushService.actionStart(getApplicationContext());
+				System.out.print("start");
+			}
 		}
 
 		// 检查服务器是否正常
@@ -222,8 +227,7 @@ public class MainActivity extends FragmentActivity {
 		 * else { Config.httpOK = false; Toast.makeText(MainActivity.this, "h5",
 		 * Toast.LENGTH_SHORT).show(); }
 		 */
-	
-		
+
 		if (Config.isConnected(this) && nc) {
 			AsyncHttpClient clientDevice = new AsyncHttpClient();
 			RequestParams deviceIDPara = new RequestParams();
@@ -293,7 +297,8 @@ public class MainActivity extends FragmentActivity {
 
 								if (currId < id) {
 									startupMessage(response);
-									Config.clearCacheData(MainActivity.this, response.getString("html"));
+									Config.clearCacheData(MainActivity.this,
+											response.getString("html"));
 									Editor editor = sp.edit();
 									editor.putBoolean("isShown", true);
 									editor.putInt("id", response.getInt("id"));
@@ -307,7 +312,6 @@ public class MainActivity extends FragmentActivity {
 						}
 					});
 		}
-		
 
 	}
 
@@ -330,16 +334,20 @@ public class MainActivity extends FragmentActivity {
 
 								try {
 									String html = response.getString("html");
+									//debug
+									//html = "http://218.249.192.55/jrj/startuphtml/20130916.htm";
 									String title = response.getString("title");
 									if (title == null || title.equals("")) {
 										title = getString(R.string.startupmessage);
 									}
 									String data = Config.getCacheData(
 											MainActivity.this, html);
-									
-								
-									if (data == null || data.equals("") || !Config.getMD5(data).equals(response.getString("md5"))) {
-//										String md5 = Config.getMD5(data);
+
+									if (data == null
+											|| data.equals("")
+											|| !Config.getMD5(data).equals(
+													response.getString("md5"))) {
+										// String md5 = Config.getMD5(data);
 										System.out.println("No cache");
 										Bundle bundle = new Bundle();
 										Intent intent = new Intent();

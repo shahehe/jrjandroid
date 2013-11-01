@@ -1,5 +1,6 @@
 package gov.jrj.ui;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,7 +60,11 @@ public class MyCenterFragment extends Fragment {
 	private Boolean isPush = false;
 	private Button clear;
 	private TextView userTimesTV;
+	private TextView userRank;
 	private TextView creditTV;
+	int reportTimes;
+	String[] totalClass;
+
 	// private ScrollView scrollViewInner;
 	// private ScrollView scrollViewOutter;
 	// private ListView msgListView;
@@ -127,8 +133,8 @@ public class MyCenterFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onResume();
 		AsyncHttpClient client = new AsyncHttpClient();
-		int uid = getActivity().getSharedPreferences(Constants.KEY_SESSION_PREFS, 0).getInt(
-				Constants.KEY_UID, 0);
+		int uid = getActivity().getSharedPreferences(
+				Constants.KEY_SESSION_PREFS, 0).getInt(Constants.KEY_UID, 0);
 		client.get(Config.URL + "/credit.php?uid=" + uid,
 				new JsonHttpResponseHandler() {
 					@Override
@@ -145,8 +151,8 @@ public class MyCenterFragment extends Fragment {
 
 					@Override
 					public void onStart() {
-					//	pd = ProgressDialog.show(getActivity(), null,
-						//		getString(R.string.loading_credit));
+						// pd = ProgressDialog.show(getActivity(), null,
+						// getString(R.string.loading_credit));
 					}
 
 					@Override
@@ -161,6 +167,62 @@ public class MyCenterFragment extends Fragment {
 					}
 
 				});
+		TelephonyManager tm = (TelephonyManager) getActivity()
+				.getSystemService(Context.TELEPHONY_SERVICE);
+		// 获取手机号码
+		String phoneId = tm.getLine1Number();
+		// phoneId = "+8618600318399";
+		try {
+			if(phoneId.length() >= 11)
+				phoneId = phoneId
+					.substring(phoneId.length() - 11, phoneId.length());
+			else
+				phoneId = "0";
+			Log.d("phone", phoneId);
+
+			BigInteger bi = new BigInteger(phoneId);
+			// 186 0031 8001-8399
+			BigInteger start = new BigInteger("18600318001");
+			BigInteger end = new BigInteger("18600318399");
+			if (!(bi.compareTo(start) >= 0 && bi.compareTo(end) <= 0))
+				client.get(Config.URL + "/getRank.php?uid=" + uid,
+						new JsonHttpResponseHandler() {
+
+							@Override
+							public void onSuccess(JSONObject response) {
+								// TODO Auto-generated method stub
+								super.onSuccess(response);
+								try {
+									SharedPreferences prefs = getActivity()
+											.getSharedPreferences(
+													Constants.KEY_UID, 0);
+									int count = prefs
+											.getInt(Constants.COUNT, 0);
+									String userClass;
+									int score = response.getInt("credit");
+									if (count >= 10 || score >= 500)
+										userClass = totalClass[3];
+									else if (count > 3 || score > 150)
+										userClass = totalClass[2];
+									else if (count >= 1 || score > 50)
+										userClass = totalClass[1];
+									else
+										userClass = totalClass[0];
+
+									userRank.setVisibility(TextView.VISIBLE);
+									userRank.setText("等级:" + userClass
+											+ " 排名:第"
+											+ response.getString("Rank") + "名");
+								} catch (JSONException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							}
+
+						});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void getData(final String url) {
@@ -270,6 +332,8 @@ public class MyCenterFragment extends Fragment {
 		username = (TextView) view.findViewById(R.id.uesrname);
 		username.setText(mContext.getString(R.string.text1) + " "
 				+ prefs.getString(Constants.KEY_USER_NAME, ""));
+		userRank = (TextView) view.findViewById(R.id.rank);
+
 		logout = (Button) view.findViewById(R.id.logout);
 		receiveMsg = (Button) view.findViewById(R.id.receive_messages);
 		logout.setOnClickListener(new OnClickListener() {
@@ -310,6 +374,11 @@ public class MyCenterFragment extends Fragment {
 				Session.getInstance().setCheckedUpdate(false);
 				Config.clearCacheData(mContext, "Product.getList");
 				Session.getInstance().setCheckedProduceUpdate(false);
+
+				SharedPreferences prefs = mContext.getSharedPreferences(
+						TextNewsListActivity.PREFS_NAME,
+						android.content.Context.MODE_WORLD_WRITEABLE);
+				prefs.edit().clear().commit();
 				Toast.makeText(mContext,
 						mContext.getString(R.string.clear_success),
 						Toast.LENGTH_SHORT).show();
@@ -317,7 +386,6 @@ public class MyCenterFragment extends Fragment {
 			}
 
 		});
-		
 
 		autoPush = (Button) view.findViewById(R.id.autopush);
 		boolean isAutoPush = mContext.getSharedPreferences(PushService.TAG,
@@ -327,6 +395,7 @@ public class MyCenterFragment extends Fragment {
 			Resources rs = mContext.getResources();
 			Drawable dr = rs.getDrawable(R.drawable.auto_push_off);
 			autoPush.setBackgroundDrawable(dr);
+			Log.d("push", "stop service");
 			PushService.actionStop(mContext.getApplicationContext());
 			isPush = false;
 		} else {
@@ -339,7 +408,9 @@ public class MyCenterFragment extends Fragment {
 			// android.content.Context.MODE_PRIVATE).getBoolean(
 			// "isStarted", false);
 			// if (!isStarted)
-			PushService.actionStart(mContext.getApplicationContext());
+			if (!PushService.isServiceRunning(mContext)) {
+				PushService.actionStart(mContext.getApplicationContext());
+			}
 		}
 		autoPush.setOnClickListener(new OnClickListener() {
 
@@ -350,6 +421,7 @@ public class MyCenterFragment extends Fragment {
 				if (isPush == true) {
 					Drawable dr = rs.getDrawable(R.drawable.auto_push_off);
 					v.setBackgroundDrawable(dr);
+					Log.d("push", "stop service");
 					PushService.actionStop(mContext.getApplicationContext());
 					isPush = false;
 					SharedPreferences prefs = mContext.getSharedPreferences(
@@ -362,7 +434,10 @@ public class MyCenterFragment extends Fragment {
 					isPush = true;
 					Drawable dr = rs.getDrawable(R.drawable.auto_push_on);
 					v.setBackgroundDrawable(dr);
-					PushService.actionStart(mContext.getApplicationContext());
+					if (!PushService.isServiceRunning(mContext)) {
+						PushService.actionStart(mContext
+								.getApplicationContext());
+					}
 					SharedPreferences prefs = mContext.getSharedPreferences(
 							PushService.TAG,
 							android.content.Context.MODE_PRIVATE);
@@ -386,10 +461,48 @@ public class MyCenterFragment extends Fragment {
 							.getDrawable(R.drawable.centerbackground_down);
 					v.setBackgroundDrawable(dr);
 					userTimesTV.setVisibility(View.VISIBLE);
-					SharedPreferences prefs = getActivity()
-							.getSharedPreferences(Constants.KEY_UID, 0);
-					int count = prefs.getInt(Constants.COUNT, 0);
-					userTimesTV.setText("您已经提交了" + count + "次");
+					// SharedPreferences prefs = getActivity()
+					// .getSharedPreferences(Constants.KEY_UID, 0);
+					// reportTimes = prefs.getInt(Constants.COUNT, 0);
+					// userTimesTV.setText("您已经提交了" + reportTimes + "次");
+					AsyncHttpClient client = new AsyncHttpClient();
+					int uid = getActivity().getSharedPreferences(
+							Constants.KEY_SESSION_PREFS, 0).getInt(
+							Constants.KEY_UID, 0);
+					client.get(Config.URL + "/getReport.php?uid=" + uid,
+							new JsonHttpResponseHandler() {
+								@Override
+								public void onSuccess(JSONObject json) {
+									try {
+										String credit = json
+												.getString("report_time");
+										userTimesTV.setText(credit);
+										pd.dismiss();
+									} catch (JSONException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+								}
+
+								@Override
+								public void onStart() {
+									pd = ProgressDialog.show(getActivity(),
+											null,
+											getString(R.string.loading_times));
+								}
+
+								@Override
+								public void onFinish() {
+									pd.dismiss();
+								}
+
+								@Override
+								public void onFailure(Throwable e) {
+									pd.dismiss();
+									Alerts.show("网络错误,服务器无法访问", getActivity());
+								}
+
+							});
 					// dr = rs.getDrawable(R.drawable.messagebox);
 					// userTimesTV.setBackgroundDrawable(dr);
 				} else {
@@ -401,8 +514,6 @@ public class MyCenterFragment extends Fragment {
 			}
 
 		});
-
-	
 
 		return view;
 	}
@@ -436,9 +547,10 @@ public class MyCenterFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		totalClass = getResources().getStringArray(R.array.total_class);
 		AsyncHttpClient client = new AsyncHttpClient();
-		int uid = getActivity().getSharedPreferences(Constants.KEY_SESSION_PREFS, 0).getInt(
-				Constants.KEY_UID, 0);
+		int uid = getActivity().getSharedPreferences(
+				Constants.KEY_SESSION_PREFS, 0).getInt(Constants.KEY_UID, 0);
 		client.get(Config.URL + "/credit.php?uid=" + uid,
 				new JsonHttpResponseHandler() {
 					@Override
@@ -471,6 +583,84 @@ public class MyCenterFragment extends Fragment {
 					}
 
 				});
+		TelephonyManager tm = (TelephonyManager) getActivity()
+				.getSystemService(Context.TELEPHONY_SERVICE);
+		// 获取手机号码
+		String phoneId = tm.getLine1Number();
+		// phoneId = "18600318399";
+		boolean isInner = true;
+		try {
+			if (phoneId.length() >= 11)
+				phoneId = phoneId.substring(phoneId.length() - 11,
+						phoneId.length());
+			else
+				phoneId = "0";	
+			BigInteger bi = new BigInteger(phoneId);
+			// 186 0031 8001-8399
+			BigInteger start = new BigInteger("18600318001");
+			BigInteger end = new BigInteger("18600318399");
+			if (!(bi.compareTo(start) >= 0 && bi.compareTo(end) <= 0)) {
+				client.get(Config.URL + "/getRank.php?uid=" + uid,
+						new JsonHttpResponseHandler() {
+
+							@Override
+							public void onSuccess(JSONObject response) {
+								// TODO Auto-generated method stub
+								super.onSuccess(response);
+								try {
+									SharedPreferences prefs = getActivity()
+											.getSharedPreferences(
+													Constants.KEY_UID, 0);
+									int count = prefs
+											.getInt(Constants.COUNT, 0);
+									String userClass;
+									int score = response.getInt("credit");
+									if (count >= 10 || score >= 500)
+										userClass = totalClass[3];
+									else if (count > 3 || score > 150)
+										userClass = totalClass[2];
+									else if (count >= 1 || score > 50)
+										userClass = totalClass[1];
+									else
+										userClass = totalClass[0];
+
+									userRank.setVisibility(TextView.VISIBLE);
+									userRank.setText("等级:" + userClass
+											+ " 排名:第"
+											+ response.getString("Rank") + "名");
+								} catch (JSONException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							}
+
+						});
+				isInner = false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		boolean register = getActivity().getSharedPreferences("registerR", 0)
+				.getBoolean("registerR", false);
+
+		if (!register) {
+			SharedPreferences prefs = getActivity().getSharedPreferences(
+					"registerR", 0);
+			Editor editor = prefs.edit();
+			editor.putBoolean("registerR", true);
+			editor.commit();
+			// TelephonyManager tm = (TelephonyManager) getActivity()
+			// .getSystemService(Context.TELEPHONY_SERVICE);
+			// // 获取手机号码
+			// String phoneId = tm.getLine1Number();
+			// debug
+			// phoneId = "+86";
+			if (isInner)
+				client.get(Config.URL + "/registerPhone.php?uid=" + uid,
+						new JsonHttpResponseHandler() {
+						});
+		}
+
 	}
 
 	public class ListItemAdapter extends BaseAdapter {

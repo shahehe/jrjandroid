@@ -170,7 +170,7 @@ public class GovInfoFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
-				intent.setClass(mContext, Government_Introduction.class);
+				intent.setClass(mContext, AwardListActivity.class);
 				intent.putExtra(Constants.KEY_SUBJECT_NAME, getString(R.string.tab1));
 				intent.putExtra(Constants.KEY_ITEM_NAME,getString(R.string.award));
 				intent.putExtra(Constants.SUBJECT_TITLE, getString(R.string.award));

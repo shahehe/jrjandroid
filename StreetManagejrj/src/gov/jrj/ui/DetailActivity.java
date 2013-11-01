@@ -61,7 +61,8 @@ public class DetailActivity extends Activity {
 
 	private void setContent() {
 		context = getIntent().getExtras().getString(Constants.KEY_ITEM_NAME);
-
+		if(context.equals("[]"))
+			context = "";
 		mContent.setText(context);
 	}
 	private void setDate() {
