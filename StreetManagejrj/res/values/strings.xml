@@ -69,24 +69,68 @@
     </string-array>
     <string-array name="total_class">
         <item>注册用户</item>
-         <item>金融街新秀</item>
-          <item>金融街卫士</item>
-           <item>金融街达人</item>
+        <item>金融街新秀</item>
+        <item>金融街卫士</item>
+        <item>金融街达人</item>
     </string-array>
-    
-    <string-array name="procedure_array">
-        <item>办理“一小”大病医疗保险</item>
-        <item>人口与计生</item>
-        <item>办理子女关系证明</item>
-        <item>党群事务</item>
-        <item>办理“一老”医保依据和流程</item>
-        <item>失业人员档案转移管理</item>
-        <item>社会事务</item>
-        <item>办理职业介绍</item>
-        <item>办理失业人员开具证明</item>
-        <item>办理居民低谷电补贴</item>
-        <item>办理社会化退休人员开具证明</item>
-        <item>办理《就业失业登记证》</item>
+    <string-array name="procedure_list">
+        <item>低保窗口</item>
+        <item>公益性组织</item>
+        <item>城镇居民医保窗口</item>
+        <item>失业窗口</item>
+        <item>社保卡窗口</item>
+        <item>退休窗口</item>
+    </string-array>
+    <string-array name="procedure_list_first">
+        <item>北京市城市居民低收入待遇申请审批办理规范</item>
+        <item>北京市城市居民最低生活保障待遇申请审批办理规范</item>
+        <item>城市特困人员医疗救助审批办理规范</item>
+    </string-array>
+    <string-array name="procedure_list_second">
+        <item>就业困难人员认定及加入公益性就业组织工作程序办理规范</item>
+    </string-array>
+    <string-array name="procedure_list_third">
+        <item>北京市城乡居民养老保险办理规范</item>
+        <item>北京市城乡无社会保障老年居民养老保障办理规范</item>
+        <item>城镇一老一小无业人员信息变更办理规范</item>
+        <item>城镇一老一小无业人员减员事宜办理规范</item>
+        <item>城镇居民异地就医办理规范</item>
+        <item>城镇居民特种病审批办理规范</item>
+        <item>城镇居民基本医疗保险办理规范</item>
+    </string-array>
+    <string-array name="procedure_list_forth">
+        <item>自谋职业（自主创业）社会保险补贴申请办理规范</item>
+        <item>一次性核发失业保险金办理规范</item>
+        <item>灵活就业社会保险补贴申请办理规范</item>
+        <item>失业人员申请退休办理规范</item>
+        <item>失业人员申领住宅清洁能源分户自采暖补贴办理规范</item>
+        <item>失业人员求职登记及职业指导业务办理规范</item>
+        <item>小额贷款办理手续办理规范</item>
+        <item>开具档案中的相关证明办理规范</item>
+        <item>档案接收办理规范</item>
+        <item>用工单位就业登记手续办理规范</item>
+        <item>个人失业登记办理规范</item>
+        <item>个人就业登记手续办理规范</item>
+        <item>按月核发失业保险金办理规范</item>
+    </string-array>
+    <string-array name="procedure_list_fifth">
+        <item>退休人员医疗费报销工作办理规范</item>
+        <item>社保卡申领办理规范</item>
+        <item>社保卡挂失与补卡办理规范</item>
+        <item>北京市城镇无业居民医疗费报销工作办理规范</item>
+    </string-array>
+    <string-array name="procedure_list_sixth">
+        <item>北京市城镇无业居民医疗费报销工作办理规范</item>
+        <item>退休人员异地就医办理规范</item>
+        <item>退休人员特种病审批办理规范</item>
+        <item>退休人员基本医疗保险视同缴费年限认定审批工作办理规范</item>
+        <item>退休人员工伤药费的报销办理规范</item>
+        <item>社会化退休人员开具无档案证明办理规范</item>
+        <item>社区管理退休人员申请享受自采暖补贴办理规范</item>
+        <item>社会化退休人员养老金异地协助认证办理规范</item>
+        <item>社会化退休人员生育费用报销办理规范</item>
+        <item>社会化退休人员档案关系转出办理规范</item>
+        <item>社会化退休人员丧葬补贴办理规范</item>
     </string-array>
     <string-array name="phone_names">
         <item>全响应管理指挥中心</item>
@@ -122,7 +166,6 @@
         <item>66219607</item>
         <item>66216988</item>
     </string-array>
-    
     <string-array name="award">
         <item>APP使用奖励</item>
         <item>工商举报奖励</item>

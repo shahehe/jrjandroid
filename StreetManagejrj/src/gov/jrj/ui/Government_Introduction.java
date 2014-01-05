@@ -1,5 +1,13 @@
 package gov.jrj.ui;
 
+import gov.jrj.R;
+import gov.jrj.ui.util.Constants;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -10,13 +18,6 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import gov.jrj.R;
-import gov.jrj.ui.util.Constants;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 public class Government_Introduction extends Activity {
 	String mTitle;
@@ -33,8 +34,11 @@ public class Government_Introduction extends Activity {
 	TextView mContent;
 	TextView mDate;
 	Button btnBack;
+	@SuppressWarnings("unused")
 	private String title = "";
+	@SuppressWarnings("unused")
 	private String subject = "";
+	@SuppressWarnings("unused")
 	private String context = "";	
 	String names = "西城区金融街街道办事处";
 

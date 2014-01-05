@@ -1,42 +1,28 @@
 package gov.jrj.ui;
 
+import gov.jrj.R;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import gov.jrj.library.http.Alerts;
-import gov.jrj.library.http.AsyncHttpClient;
-import gov.jrj.library.http.Config;
-import gov.jrj.library.http.ImageLoader;
-import gov.jrj.library.http.JsonHttpResponseHandler;
-import gov.jrj.library.http.Session;
-
-import gov.jrj.R;
-import gov.jrj.ui.ProductListActivity.ListItemAdapter;
-import gov.jrj.ui.util.Constants;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
+import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class CustomerInfoActivity extends Activity {
 
+	@SuppressWarnings("unused")
 	private JSONArray jsons = new JSONArray();
+	@SuppressWarnings("unused")
 	private Activity mContext;
+	@SuppressWarnings("unused")
 	private ProgressDialog pd;
 
 	ProgressBar progressBar;

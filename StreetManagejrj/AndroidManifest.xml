@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="gov.jrj"
     android:versionCode="1"
-    android:versionName="1.5.0" >
+    android:versionName="1.6.0" xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-sdk android:minSdkVersion="8" />
+    <uses-sdk android:minSdkVersion="8" tools:ignore="UsesMinSdkAttributes"/>
 
     <permission
         android:name="scott.permission.MY_CALL_PHONE"
@@ -33,7 +33,7 @@
     <application
         android:name=".AppEx"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name" tools:ignore="AllowBackup">
         <activity
             android:name=".ui.StartActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -63,15 +63,15 @@
         </activity>
         <activity android:name=".ui.WebViewActivity" >
         </activity>
-         <activity android:name=".ui.StartupWebViewActivity" >
+        <activity android:name=".ui.StartupWebViewActivity" >
         </activity>
         <activity android:name=".ui.ContactPhoneActivity" >
         </activity>
-        <activity android:name=".ui.CommerceListActivity">
+        <activity android:name=".ui.CommerceListActivity" >
         </activity>
-        <activity android:name=".ui.CustomerListActivity">
+        <activity android:name=".ui.CustomerListActivity" >
         </activity>
-        <activity android:name=".ui.procedure" >
+        <activity android:name=".ui.ProcedureList" >
         </activity>
         <activity android:name=".ui.TextNewsListActivity" >
         </activity>
@@ -85,23 +85,25 @@
         </activity>
         <activity android:name=".ui.HealthViewActivity" >
         </activity>
-           <activity android:name=".ui.HealthInfoActivity" >
+        <activity android:name=".ui.HealthInfoActivity" >
         </activity>
         <activity android:name=".ui.CustomizedListView" >
         </activity>
         <activity android:name=".ui.yuxiang" >
+        </activity>
+        <activity android:name=".ui.ProcedureActivity" >
         </activity>
 
         <service android:name=".ui.PushService" />
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote" 
-            >
-            <intent-filter android:priority="1000"></intent-filter>
+            android:process=":remote" tools:ignore="ExportedService">
+            <intent-filter android:priority="1000" >
+            </intent-filter>
         </service>
 
-        <receiver android:name=".Boardcast.BootBoardcast" >
+        <receiver android:name=".Boardcast.BootBoardcast" tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" >
                 </action>

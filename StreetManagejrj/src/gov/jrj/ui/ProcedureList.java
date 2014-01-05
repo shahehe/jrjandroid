@@ -19,7 +19,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-public class procedure extends Activity {
+public class ProcedureList extends Activity {
 
 	String tel;
 	TextView mTextTitle;
@@ -34,7 +34,6 @@ public class procedure extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.title_list);
 
-
 		mTextTitle = (TextView) findViewById(R.id.txt_title);
 		lstView = (ListView) findViewById(R.id.list);
 
@@ -43,10 +42,30 @@ public class procedure extends Activity {
 
 		Resources res = getResources();
 		int arrayRes = getIntent().getExtras().getInt(Constants.KEY_ARRAY);
-		if (arrayRes == R.array.gongshang_array)
+		if (arrayRes == R.array.gongshang_array) {
 			prefix = "gongshang";
-		else
-			prefix = "procedure";
+		} else {
+			switch(arrayRes){
+			case R.array.procedure_list_first:
+				prefix = "PR_1_";
+				break;
+			case R.array.procedure_list_second:
+				prefix = "PR_2_";
+				break;
+			case R.array.procedure_list_third:
+				prefix = "PR_3_";
+				break;
+			case R.array.procedure_list_forth:
+				prefix = "PR_4_";
+				break;
+			case R.array.procedure_list_fifth:
+				prefix = "PR_5_";
+				break;
+			case R.array.procedure_list_sixth:
+				prefix = "PR_6_";
+				break;	
+			}
+		}
 
 		// procedureTitles = res.getStringArray(R.array.procedure_array);
 		procedureTitles = res.getStringArray(arrayRes);
@@ -86,37 +105,34 @@ public class procedure extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 
-			
-					// Intent intent = new Intent();
-					Intent intent = new Intent(procedure.this,
-							Government_Introduction.class);
-					// intent.setClass(this,Government_Introduction.class);
-					intent.putExtra(Constants.KEY_SUBJECT_NAME, subject);
-					intent.putExtra(Constants.KEY_ITEM_NAME, subTitle);
-					intent.putExtra(Constants.SUBJECT_TITLE,
-							procedureTitles[arg2]);
-					intent.putExtra(Constants.CONTENT_FILE,
-							prefix + Integer.toString(arg2));
-					startActivity(intent);
-				
+				// Intent intent = new Intent();
+				Intent intent = new Intent(ProcedureList.this,
+						Government_Introduction.class);
+				// intent.setClass(this,Government_Introduction.class);
+				intent.putExtra(Constants.KEY_SUBJECT_NAME, subject);
+				intent.putExtra(Constants.KEY_ITEM_NAME, subTitle);
+				intent.putExtra(Constants.SUBJECT_TITLE, procedureTitles[arg2]);
+				intent.putExtra(Constants.CONTENT_FILE,
+						prefix + Integer.toString(arg2));
+				startActivity(intent);
+
 			}
 
 		});
-		
-		try{
+
+		try {
 			int second = Integer.parseInt(getIntent().getStringExtra("second"));
 			second--;
-			Intent intent = new Intent(procedure.this,
+			Intent intent = new Intent(ProcedureList.this,
 					Government_Introduction.class);
 			// intent.setClass(this,Government_Introduction.class);
 			intent.putExtra(Constants.KEY_SUBJECT_NAME, subject);
 			intent.putExtra(Constants.KEY_ITEM_NAME, subTitle);
-			intent.putExtra(Constants.SUBJECT_TITLE,
-					procedureTitles[second]);
+			intent.putExtra(Constants.SUBJECT_TITLE, procedureTitles[second]);
 			intent.putExtra(Constants.CONTENT_FILE,
 					prefix + Integer.toString(second));
 			startActivity(intent);
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -137,7 +153,7 @@ public class procedure extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				procedure.this.finish();
+				ProcedureList.this.finish();
 			}
 		});
 	}

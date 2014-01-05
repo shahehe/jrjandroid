@@ -11,11 +11,12 @@ public final class Log {
 	// set to false when building release version
 	public static final boolean DBG = true;
 	public static final boolean LOG_IO = true;
-	public static final boolean NO_DATA = false;//ÓÐ¶¨Î»ÐÅºÅ µ«Ã»ÓÐµØÍ¼Êý¾Ý
-	public static boolean PRIVIEW = true; // ÑÝÊ¾ Ê±£¬Èç¹ûÃ»ÓÐÐÅºÅ ÊÇ·ñÏÔÊ¾¹Ì¶¨Î»ÖÃµÄµ×Í¼
+	public static final boolean NO_DATA = false;//ï¿½Ð¶ï¿½Î»ï¿½Åºï¿½ ï¿½ï¿½Ã»ï¿½Ðµï¿½Í¼ï¿½ï¿½ï¿½
+	public static boolean PRIVIEW = true; // ï¿½ï¿½Ê¾ Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Åºï¿½ ï¿½Ç·ï¿½ï¿½ï¿½Ê¾ï¿½Ì¶ï¿½Î»ï¿½ÃµÄµï¿½Í¼
 	
 	public static final String APP_TAG = "StreetManage";
 
+	@SuppressWarnings("rawtypes")
 	public static void i(Object tag, String msg) {
 		if (!DBG)
 			return;
@@ -34,6 +35,7 @@ public final class Log {
 
 	}
 
+	@SuppressWarnings("rawtypes")
 	public static void d(Object tag, String msg) {
 		if (!DBG)
 			return;

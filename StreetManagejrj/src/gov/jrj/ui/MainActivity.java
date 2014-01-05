@@ -1,5 +1,15 @@
 package gov.jrj.ui;
 
+import gov.jrj.R;
+import gov.jrj.library.http.AsyncHttpClient;
+import gov.jrj.library.http.Config;
+import gov.jrj.library.http.JsonHttpResponseHandler;
+import gov.jrj.library.http.RequestParams;
+import gov.jrj.library.http.Session;
+import gov.jrj.library.http.StartImageLoader;
+import gov.jrj.ui.app.StartupDialog;
+import gov.jrj.ui.util.Constants;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -7,26 +17,14 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import gov.jrj.R;
-import gov.jrj.library.http.AsyncHttpClient;
-import gov.jrj.library.http.AsyncHttpResponseHandler;
-import gov.jrj.library.http.Config;
-import gov.jrj.library.http.ImageLoader;
-import gov.jrj.library.http.JsonHttpResponseHandler;
-import gov.jrj.library.http.RequestParams;
-import gov.jrj.library.http.Session;
-import gov.jrj.library.http.StartImageLoader;
-import gov.jrj.ui.app.StartupDialog;
-import gov.jrj.ui.util.Constants;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.app.AlertDialog.Builder;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
@@ -36,16 +34,13 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Message;
 import android.provider.Settings.Secure;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity {

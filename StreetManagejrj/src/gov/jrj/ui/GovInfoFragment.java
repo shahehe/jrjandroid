@@ -1,22 +1,20 @@
 package gov.jrj.ui;
 
+import gov.jrj.R;
+import gov.jrj.ui.util.Constants;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-import gov.jrj.R;
-import gov.jrj.ui.util.Constants;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +30,7 @@ import android.widget.SimpleAdapter;
 public class GovInfoFragment extends Fragment {
 	private View view ;
 	private ImageButton award;
-	// ������Ϣ
+
 	public static int[] subjects = new int[] { R.string.gover_discription,
 			R.string.work_procedure, R.string.contact_phone, R.string.book, R.string.gongshang };
 
@@ -59,10 +57,9 @@ public class GovInfoFragment extends Fragment {
 
 				break; 
 			case 1:
-				intent.setClass(mContext, procedure.class);
+				intent.setClass(mContext, ProcedureActivity.class);
 				intent.putExtra(Constants.KEY_SUBJECT_NAME, getString(R.string.tab1));
 				intent.putExtra(Constants.KEY_ITEM_NAME, getString(mSubjects[arg2]));
-				intent.putExtra(Constants.KEY_ARRAY, R.array.procedure_array);
 				mContext.startActivity(intent);				
 				break;
 			case 2: // ��ϵ�绰
@@ -80,7 +77,7 @@ public class GovInfoFragment extends Fragment {
 				mContext.startActivity(intent);
 				break;				
 			case 4: //gongshang
-				intent.setClass(mContext, procedure.class);
+				intent.setClass(mContext, ProcedureList.class);
 				intent.putExtra(Constants.KEY_SUBJECT_NAME, getString(R.string.tab1));
 				intent.putExtra(Constants.KEY_ITEM_NAME, getString(mSubjects[arg2]));
 				intent.putExtra(Constants.KEY_ARRAY, R.array.gongshang_array);

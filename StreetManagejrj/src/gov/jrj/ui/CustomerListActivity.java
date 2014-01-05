@@ -1,16 +1,6 @@
 package gov.jrj.ui;
 
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
-
 import gov.jrj.R;
-import gov.jrj.ui.util.Constants;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import gov.jrj.library.http.Alerts;
 import gov.jrj.library.http.AsyncHttpClient;
 import gov.jrj.library.http.Config;
@@ -18,6 +8,16 @@ import gov.jrj.library.http.JSONRPCHandler;
 import gov.jrj.library.http.JSONRPCService;
 import gov.jrj.library.http.JsonHttpResponseHandler;
 import gov.jrj.library.http.Session;
+import gov.jrj.ui.util.Constants;
+
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -26,16 +26,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class CustomerListActivity extends Activity {
 
@@ -69,6 +69,7 @@ public class CustomerListActivity extends Activity {
 		loadData();
 	}
 
+	@SuppressWarnings("unused")
 	private void setTitle() {
 		String subTitle = "", subject = "";
 		subTitle = getIntent().getExtras().getString(Constants.KEY_ITEM_NAME);

@@ -1,5 +1,18 @@
 package gov.jrj.ui;
 
+import gov.jrj.Log;
+import gov.jrj.R;
+import gov.jrj.library.http.Alerts;
+import gov.jrj.library.http.AsyncHttpClient;
+import gov.jrj.library.http.Config;
+import gov.jrj.library.http.JsonHttpResponseHandler;
+import gov.jrj.library.http.RequestParams;
+import gov.jrj.ui.map.MapViewActivity;
+import gov.jrj.ui.map.Listener.MyLocationListenner;
+import gov.jrj.ui.util.AudioRecorder;
+import gov.jrj.ui.util.Constants;
+import gov.jrj.ui.util.Util;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,24 +31,12 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import gov.jrj.Log;
-import gov.jrj.R;
-import gov.jrj.library.http.Alerts;
-import gov.jrj.library.http.AsyncHttpClient;
-import gov.jrj.library.http.Config;
-import gov.jrj.library.http.JsonHttpResponseHandler;
-import gov.jrj.library.http.RequestParams;
-import gov.jrj.ui.map.MapViewActivity;
-import gov.jrj.ui.map.Listener.MyLocationListenner;
-import gov.jrj.ui.util.AudioRecorder;
-import gov.jrj.ui.util.Constants;
-import gov.jrj.ui.util.Util;
-import gov.jrj.ui.PushService;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -56,7 +57,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.provider.MediaStore.MediaColumns;
-import android.provider.Settings.Secure;
 import android.support.v4.app.Fragment;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -64,23 +64,22 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
@@ -120,6 +119,7 @@ class RequestTask extends AsyncTask<String, String, String> {
 	}
 }
 
+@SuppressLint({ "SimpleDateFormat", "HandlerLeak" })
 public class FeedbackFragment extends Fragment {
 
 	@Override
@@ -127,6 +127,7 @@ public class FeedbackFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onResume();
 		if (Util.isSessionValiad(getActivity())) {
+			@SuppressWarnings("unused")
 			SharedPreferences prefs = getActivity().getSharedPreferences(
 					Constants.KEY_SESSION_PREFS, 0);
 		}
@@ -144,6 +145,7 @@ public class FeedbackFragment extends Fragment {
 	private Button record;
 	private Dialog dialog;
 	private AudioRecorder mr;
+	@SuppressWarnings("unused")
 	private MediaPlayer mediaPlayer;
 	private Thread recordThread;
 
@@ -160,6 +162,7 @@ public class FeedbackFragment extends Fragment {
 	private static double voiceValue = 0.0; // 麦克风获取的音量值
 
 	private ImageView dialog_img;
+	@SuppressWarnings("unused")
 	private static boolean playState = false; // 播放状态
 
 	public LocationClient mLocationClient = null;
@@ -197,8 +200,10 @@ public class FeedbackFragment extends Fragment {
 	private double latitude = -1.1;
 	private double longitude = -1.1;
 	private Uri imageUri;
+	@SuppressWarnings("unused")
 	private Spinner reportCategory = null;
 	private boolean hasVoice = false;
+	@SuppressWarnings("unused")
 	private String voicePath;
 	View view;
 
@@ -400,6 +405,7 @@ public class FeedbackFragment extends Fragment {
 		// btnTest.setVisibility( View.GONE);
 		// editName = (EditText) view.findViewById(R.id.contactedittext);
 		if (Util.isSessionValiad(getActivity())) {
+			@SuppressWarnings("unused")
 			SharedPreferences prefs = getActivity().getSharedPreferences(
 					Constants.KEY_SESSION_PREFS, 0);
 			// editName.setText(prefs.getString(Constants.KEY_USER_NAME, ""));
@@ -643,6 +649,7 @@ public class FeedbackFragment extends Fragment {
 	}
 
 	// 获取文件手机路径
+	@SuppressWarnings("unused")
 	private String getAmrPath() {
 		File file = new File(Environment.getExternalStorageDirectory(),
 				"jrj/voice.amr");
