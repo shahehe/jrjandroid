@@ -74,22 +74,18 @@
         <item>金融街达人</item>
     </string-array>
     <string-array name="procedure_list">
-        <item>低保窗口</item>
-        <item>公益性组织</item>
-        <item>城镇居民医保窗口</item>
-        <item>失业窗口</item>
-        <item>社保卡窗口</item>
-        <item>退休窗口</item>
+        <item>人力社保</item>
+        <item>人口计生</item>
+        <item>住保</item>
+        <item>残联</item>
+        <item>民政</item>
+        <item>计划生育</item>
     </string-array>
     <string-array name="procedure_list_first">
         <item>北京市城市居民低收入待遇申请审批办理规范</item>
         <item>北京市城市居民最低生活保障待遇申请审批办理规范</item>
         <item>城市特困人员医疗救助审批办理规范</item>
-    </string-array>
-    <string-array name="procedure_list_second">
         <item>就业困难人员认定及加入公益性就业组织工作程序办理规范</item>
-    </string-array>
-    <string-array name="procedure_list_third">
         <item>北京市城乡居民养老保险办理规范</item>
         <item>北京市城乡无社会保障老年居民养老保障办理规范</item>
         <item>城镇一老一小无业人员信息变更办理规范</item>
@@ -97,8 +93,6 @@
         <item>城镇居民异地就医办理规范</item>
         <item>城镇居民特种病审批办理规范</item>
         <item>城镇居民基本医疗保险办理规范</item>
-    </string-array>
-    <string-array name="procedure_list_forth">
         <item>自谋职业（自主创业）社会保险补贴申请办理规范</item>
         <item>一次性核发失业保险金办理规范</item>
         <item>灵活就业社会保险补贴申请办理规范</item>
@@ -112,14 +106,10 @@
         <item>个人失业登记办理规范</item>
         <item>个人就业登记手续办理规范</item>
         <item>按月核发失业保险金办理规范</item>
-    </string-array>
-    <string-array name="procedure_list_fifth">
         <item>退休人员医疗费报销工作办理规范</item>
         <item>社保卡申领办理规范</item>
         <item>社保卡挂失与补卡办理规范</item>
         <item>北京市城镇无业居民医疗费报销工作办理规范</item>
-    </string-array>
-    <string-array name="procedure_list_sixth">
         <item>北京市城镇无业居民医疗费报销工作办理规范</item>
         <item>退休人员异地就医办理规范</item>
         <item>退休人员特种病审批办理规范</item>
@@ -131,6 +121,62 @@
         <item>社会化退休人员生育费用报销办理规范</item>
         <item>社会化退休人员档案关系转出办理规范</item>
         <item>社会化退休人员丧葬补贴办理规范</item>
+    </string-array>
+    <string-array name="procedure_list_second">
+        <item>查验《流动人口婚育证明》办理规范</item>
+        <item>发放独生子女父母奖励费的办理规范</item>
+        <item>发放独生子女父母年老时一次性奖励的办理规范</item>
+        <item>流动人口“四术”报销办理规范</item>
+        <item>流动人口一孩生育服务登记办理规范</item>
+        <item>流动已婚育龄妇女采取长效避孕节育措施享受一次性奖励办理规范</item>
+        <item>办理再生育一个子女《生育服务证》工作规范</item>
+        <item>办理第二个子女随父入户计划生育手续工作规范</item>
+        <item>办理可以生育第二个子女但不生育的一次性奖励工作规范</item>
+        <item>发放独生子女意外伤残、死亡对其父母的一次性经济帮助工作规范</item>
+        <item>对违反规定生育的公民征收社会抚养费工作规范</item>
+        <item>审批独生子女死亡家庭特别扶助工作规范</item>
+        <item>审批独生子女伤残家庭特别扶助工作规范</item>
+        <item>病残儿医学鉴定工作规范</item>
+    </string-array>
+    <string-array name="procedure_list_third">
+        <item>公共租赁住房配租资格初审、摇号、配租及后期管理办理规范</item>
+        <item>经济适用住房配租资格初审、摇号、配租及后期管理办理规范</item>
+        <item>廉租住房、经济适用住房、限价商品住房、公共租赁住房配租配售资格变更、取消办理规范</item>
+        <item>廉租住房、经济适用住房、限价商品住房、公共租赁住房配租配售资格年度复核办理规范</item>
+        <item>廉租住房配租资格初审、摇号、配租及后期管理办理规范</item>
+        <item>限价商品住房配租资格初审、摇号、配租及后期管理办理规范</item>
+    </string-array>
+    <string-array name="procedure_list_forth">
+        <item>核发《中华人民共和国残疾人证》办理规范</item>
+        <item>残疾人生活补助审批办理规范</item>
+        <item>残疾儿童少年康复补助办理规范</item>
+        <item>残疾人学生和生活困难残疾人子女学生助学补助申请办理规范</item>
+        <item>残疾人辅助器具服务工作办理指南</item>
+        <item>个体就业残疾人社会保险补贴办理指南</item>
+    </string-array>
+    <string-array name="procedure_list_fifth">
+        <item>“小帮手”电子服务器配备使用办理规范</item>
+        <item>残疾军人丧葬补助费办理规范</item>
+        <item>残疾军人优待抚恤关系转移办理规范</item>
+        <item>发放孤儿基本生活费办理规范</item>
+        <item>军烈属关系转移办理规范</item>
+        <item>认定部分烈士子女办理规范</item>
+        <item>申请95岁及以上老年人医疗费用补助办理规范</item>
+        <item>申请居家养老（助残）服务券办理规范</item>
+        <item>享受定期抚恤金的烈士遗嘱、因公牺牲军人遗嘱、病故军人遗嘱丧葬补助费办理规范</item>
+        <item>60岁及以上老年人优待证办理规范</item>
+        <item>65岁及以上老年人优待卡办理规范</item>
+        <item>80岁及以上老年人养老服务补贴办理规范</item>
+        <item>90岁及以上高龄老年人津贴办理规范</item>
+        <item>城市特困人员临时救助审批办理规范</item>
+    </string-array>
+    <string-array name="procedure_list_sixth">
+        <item>办理《独生子女父母光荣证》办理规范</item>
+        <item>办理流动人口《生育服务联系单》（分普通版和生育保险专用版）</item>
+        <item>第一个子女《生育服务证》办理规范</item>
+        <item>第一个子女随父入户计划生育手续办理规范</item>
+        <item>户籍流出的成年育龄妇女《流动人口婚育证明》的更换办理规范</item>
+        <item>户籍流出的成年育龄妇女办理《流动人口婚育证明》的办理规范</item>
     </string-array>
     <string-array name="phone_names">
         <item>全响应管理指挥中心</item>
