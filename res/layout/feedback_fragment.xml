@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/screen"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/backgroundrep"
+    android:fadeScrollbars="true"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <!--
+        <LinearLayout
+            android:id="@+id/superviese1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/titletextview"
+                style="@style/text_label_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="@string/title" />
+
+                  <Spinner
+	              android:id="@+id/categorySpinner"
+	              android:layout_width="match_parent"
+	              android:layout_height="wrap_content"
+	              android:layout_weight="2"
+	              android:entries="@array/report_category_arrays"
+                  android:prompt="@string/report_category_prompt" />
+        </LinearLayout>-->
+
+        <LinearLayout
+            android:id="@+id/superviese4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="2"
+                android:background="@drawable/box" >
+
+                <ImageButton
+                    android:id="@+id/btn_camera"
+                    android:layout_width="65dp"
+                    android:layout_height="45dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="6dp"
+                    android:layout_weight="2.20"
+                    android:background="@drawable/camera"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:id="@+id/addtextview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/ortextview"
+                    android:layout_alignTop="@+id/ortextview"
+                    android:layout_marginLeft="8dp"
+                    android:text="@string/addtextview"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/ortextview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="0dp"
+                    android:layout_toRightOf="@+id/btn_camera"
+                    android:layout_weight="4"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5dip"
+                    android:paddingRight="5dip"
+                    android:paddingTop="0dip"
+                    android:singleLine="true"
+                    android:text="@string/ortextview"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <ImageButton
+                    android:id="@+id/btn_gallery"
+                    android:layout_width="65dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/btn_camera"
+                    android:layout_marginRight="24dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/doc"
+                    android:scaleType="fitXY" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <include
+            android:id="@+id/image_thumb"
+            layout="@layout/imagethumbspace" />
+
+        <LinearLayout
+            android:id="@+id/superviese5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_thumb"
+            android:layout_marginTop="5dip"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/phoneNumber"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/phone"
+                android:inputType="phone" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/describeedittext"
+                android:layout_width="fill_parent"
+                android:layout_height="115dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="2"
+                android:ems="10"
+                android:gravity="top"
+                android:hint="@string/describetextview"
+                android:inputType="textShortMessage|textAutoCorrect|textCapSentences|textMultiLine"
+                android:scrollbarAlwaysDrawVerticalTrack="true" />
+
+            <Button
+                android:id="@+id/record"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/buttonbackground"
+                android:text="@string/speak"
+                 />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/superviese6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/superviese5"
+            android:layout_marginTop="5dip"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/chkbox_feedback"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:text="@string/is_feedback_needed"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/superviese7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/superviese6"
+            android:layout_marginTop="10dip"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_map"
+                android:layout_width="0dip"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dip"
+                android:layout_weight="1"
+                android:background="@drawable/buttonbackground"
+                android:gravity="center"
+                android:text="@string/open_map"
+                android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/putin"
+                android:layout_width="0dip"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/buttonbackground"
+                android:gravity="center"
+                android:text="@string/putin"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

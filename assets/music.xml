@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<music>
+    <song>
+        <id>11</id>
+        <title>中国人民银行总行</title>
+        <artist>中国人民银行总行的2300余名员工在内工作</artist>
+        <duration>11层</duration>
+	    <plays>1662</plays>
+	    <thumb_url>11</thumb_url>
+    </song>
+	<song>
+        <id>20</id>
+        <title>中国移动</title>
+        <artist>大厦的地下设有215个停车位可供企业使用。大厦内是中国移动通信集团公司，这家企业的700多名员工在大厦内进行日常办公。</artist>
+        <duration>23层</duration>
+	    <plays>1900</plays>
+	    <thumb_url>20</thumb_url>
+    </song>
+
+</music>

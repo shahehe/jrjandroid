@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/start_relative"
+     >
+
+
+        <TextView
+            android:id="@+id/start_text_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dip"
+            android:layout_marginTop="20dip"
+            android:text=""
+            android:textSize="16sp" />
+
+        <gov.jrj.ui.views.AnimationView
+            android:id="@+id/start_view_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/startImageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/start_text_version"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="130dp"
+            android:src="@drawable/startpage" />
+
+</RelativeLayout>
