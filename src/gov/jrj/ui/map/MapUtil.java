@@ -2,26 +2,15 @@ package gov.jrj.ui.map;
 
 public class MapUtil {
 
-	/*
-	 * 地球半径
-	 */
+
     private static final double EARTH_RADIUS = 6378.137;
 
-    /*
-     * 化作弧度单位
-     */
+
     private static double rad(double d) {
         return d * Math.PI / 180.0;
     }
 
-    /**
-     * 根据两站点的经纬度求两站点间的距离,弧度距离
-     * @param lat1
-     * @param lng1
-     * @param lat2
-     * @param lng2
-     * @return
-     */
+
     public static double GetDistance(double lat1, double lng1, double lat2, double lng2) {
         double radLat1 = rad(lat1);
         double radLat2 = rad(lat2);
@@ -34,14 +23,7 @@ public class MapUtil {
         return s;
     }
 
-    /**
-     * 根据两站点的经纬度求两站点间的距离
-     * @param lat1
-     * @param lng1
-     * @param lat2
-     * @param lng2
-     * @return
-     */
+
     public static double D_jw(double wd1, double jd1, double wd2, double jd2) {
         double x, y, out;
         double PI = 3.14159265;

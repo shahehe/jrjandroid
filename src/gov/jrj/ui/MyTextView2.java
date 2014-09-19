@@ -43,7 +43,6 @@ public class MyTextView2 extends TextView{
 		text = this.getText().toString();//.replaceAll("\n", "\r\n");
 		if(text==null)return;
 		char[] textCharArray = text.toCharArray();
-		// ÒÑ»æµÄ¿í¶È
 		float drawedWidth = 0;
 		float charWidth;
 		for (int i = 0; i < textCharArray.length; i++) {
