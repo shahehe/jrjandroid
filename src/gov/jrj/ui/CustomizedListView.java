@@ -15,7 +15,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 
+
 import com.example.androidhive.LazyAdapter;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +29,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import gov.jrj.R;
@@ -42,6 +45,7 @@ public class CustomizedListView extends Activity {
 	public static final String KEY_ARTIST = "Column11";
 	public static final String KEY_DURATION = "Column3";
 	public static final String KEY_THUMB_URL = "thumb_url";
+	public static final String KEY_POSITION = "Column12";
 	public HashMap<String, String> pos2it = new HashMap<String,String>();
 	/*
 	static final String KEY_SONG = "song"; // parent node
@@ -90,7 +94,7 @@ public class CustomizedListView extends Activity {
 		mTextTitle = (TextView) findViewById(R.id.txt_title);
 		setTitle();
 		setBackBtnLisenter();
-		ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
+		final ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
 	
 /*
 		XMLParser parser = new XMLParser();
@@ -118,6 +122,7 @@ public class CustomizedListView extends Activity {
 			map.put(KEY_ARTIST,getValue(fstElmnt, KEY_ARTIST));
 			map.put(KEY_DURATION, getValue(fstElmnt, KEY_DURATION) );
 			map.put(KEY_THUMB_URL, getValue(fstElmnt, KEY_ID));
+			map.put(KEY_POSITION, getValue(fstElmnt, KEY_POSITION));
 			/*
 			map.put(KEY_TITLE, parser.getValue(e, KEY_TITLE));
 			map.put(KEY_ARTIST, parser.getValue(e, KEY_ARTIST));
@@ -136,7 +141,7 @@ public class CustomizedListView extends Activity {
 		list=(ListView)findViewById(R.id.list);
 		
 		// Getting adapter by passing xml data ArrayList
-        adapter=new LazyAdapter(this, songsList);        
+        adapter=new LazyAdapter(this, songsList);
         list.setAdapter(adapter);
 		/*
 		map.put(KEY_ID, "1");
@@ -159,6 +164,10 @@ public class CustomizedListView extends Activity {
 				intent.putExtra(Constants.SUBJECT_TITLE, "西城区金融街街道办事处");
 				intent.putExtra(Constants.CONTENT_FILE, "test.txt");
 				intent.putExtra("buildingId", pos2it.get(Integer.toString(position)));
+//				Toast.makeText(CustomizedListView.this,"buildingId:"+pos2it.get(Integer.toString(position)), 2000).show();
+				intent.putExtra("position", songsList.get(position).get(KEY_POSITION));
+				intent.putExtra("name", songsList.get(position).get(KEY_TITLE));
+//				Toast.makeText(CustomizedListView.this,songsList.get(position).get(KEY_TITLE), 2000).show();
 				CustomizedListView.this.startActivity(intent);
 
 			}

@@ -37,6 +37,17 @@
                 android:textColor="@color/text_color_black"
                 android:textSize="18sp" />
         </LinearLayout>
+        
+        <ImageButton 
+            android:id="@+id/navigationBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_navigation"
+            android:layout_marginRight="10dp"
+            />
     </RelativeLayout>
 
 
