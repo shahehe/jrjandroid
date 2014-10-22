@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:id="@+id/phonesuit_general_set_top_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_top_gray_bg" >
+
+        <Button
+            android:id="@+id/about_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:background="@drawable/ic_back_button"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/account_list_checkall_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="@string/tab2"
+                android:textColor="@color/text_color_black"
+                android:textSize="18sp" />
+            <!--
+            <ImageView 
+	            android:layout_gravity="center_horizontal" 
+	            android:layout_width="wrap_content" 
+	            android:layout_height="wrap_content" 
+	            android:src="@drawable/ic_navigate" />
+            <TextView
+            	android:text="@string/street_news" 
+            	android:textColor="@color/text_color_black" 
+            	android:gravity="center" 
+            	android:layout_width="wrap_content" 
+            	android:layout_height="wrap_content" 
+            	android:layout_marginTop="2dp"
+            	/>
+            -->
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/phonesuit_general_set_list_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phonesuit_general_set_top_bar"
+        android:background="#999999"
+        android:gravity="center" >
+
+        <!--
+         	    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="94dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/icon" />
+        -->
+        <!--
+            <TextView 
+				android:layout_width="wrap_content"   
+				android:layout_height="wrap_content"
+				android:textColor="#FFFFFF"
+				android:textStyle="bold"
+				android:textSize="8sp"
+				android:layout_below="@id/imageView1"
+				android:layout_marginLeft="2dip"
+				android:layout_marginTop="20dp"
+				android:gravity="center_horizontal"
+				android:text="@string/duche_help"
+			/>
+        -->
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/phonesuit_general_set_list_title"
+        android:background="#FFFFFF"
+        android:descendantFocusability="blocksDescendants"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/text_content_background_color"
+            android:cacheColorHint="#00000000"
+            android:divider="@drawable/product_line" />
+    </LinearLayout>
+
+</RelativeLayout>
